@@ -23,8 +23,8 @@ fn get_signature(request: String, secret_key: &str) -> String {
 
 pub fn get_binancetest_balance() -> Result<Vec<Value>, Box<dyn std::error::Error>> {
     // 从环境变量获取API密钥和密钥
-    let api_key = "hhQqQqttwlDf8aNirQnokDNR4CUusER1msgtFZeZDduZatGRiKZa54UJN2XOgEiJ";
-    let secret_key = "bAEsJUVYFJPqhfkPnZhtBaHo529bkCdcNGkVi5DmKvZa9wQI6wmubuvRl75OZTvn";
+    let api_key = "gBDp3QZhHfpOgc1RoEBlmH1MssTsCQ7DdeVg986OuueWsKHRqj9m3Pps6MUJFXUa";
+    let secret_key = "dGOSvsTGK3QyIsWJ8GEEhnFIFqBFN2Iyz7O0KiLfpznnrpPNmGO5xUiUAQD6IVjF";
 
     let mut headers = header::HeaderMap::new();
     headers.insert(
@@ -46,15 +46,15 @@ pub fn get_binancetest_balance() -> Result<Vec<Value>, Box<dyn std::error::Error
     let signature = get_signature(params.clone(), secret_key);
 
     // 构建完整请求URL
-    // let request_url = format!(
-    //     "https://testnet.binance.vision/api/v3/account?{}&signature={}",
-    //     params, signature
-    // );
-    // 构建完整请求URL
     let request_url = format!(
-        "https://api.binance.com/api/v3/account?{}&signature={}",
+        "https://testnet.binance.vision/api/v3/account?{}&signature={}",
         params, signature
     );
+    // 构建完整请求URL
+    // let request_url = format!(
+    //     "https://api.binance.com/api/v3/account?{}&signature={}",
+    //     params, signature
+    // );
 
     // 发送请求并处理响应
     let response = client.get(&request_url).send()?;
